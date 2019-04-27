@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+  <h2>To Do App</h2>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" #itemTitle>
+  <div class="input-group-append hover-cursor" (click)="onAdd(itemTitle)">
+      <div class="input-group-text">
+          <i class="fa fa-plus-circle"></i>
+        </div>
+    
+  </div>
+</div>
+
+<div style="margin: 5px 0px">
+  <div class="list-group">
+    <li class="list-group-item" *ngFor="let item of todoItemList">
+      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="onStatusChange(item.$key, item.isChecked)">
+        <i class="far fa-lg" [ngClass]="item.isChecked ? 'fa-check-circle': 'fa-circle'"></i>
+      </span>
+      {{ item.title | titlecase }}
+      <span class="hover-cursor text-danger" style="float:right" (click)="onDelete(item.$key)">
+        <i class="fa fa-trash-alt fa-lg"></i>
+      </span>
+    </li>
+  </div>
+</div>
